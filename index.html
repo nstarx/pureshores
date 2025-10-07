@@ -101,267 +101,192 @@
             height: 30%;
             background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
         }
-
-        .disclaimer {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 59, 48, 0.95);
-            backdrop-filter: blur(15px);
-            padding: 50px 70px;
-            border-radius: 20px;
-            color: white;
-            font-size: clamp(1.3rem, 3.5vw, 2.5rem);
-            text-align: center;
-            max-width: 90%;
-            border: 4px solid rgba(255, 255, 255, 0.4);
-            pointer-events: auto;
-            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6);
-            z-index: 1000;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .disclaimer strong {
-            color: #fff;
-            font-weight: 800;
-            font-size: 1.4em;
-            display: block;
-            margin: 20px 0;
-            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
-            letter-spacing: 0.05em;
-        }
-
-        .disclaimer-legal {
-            font-size: 0.5em;
-            margin-top: 25px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .disclaimer-legal a {
-            color: #fff;
-            text-decoration: underline;
-            font-weight: 600;
-        }
-
-        .disclaimer-legal a:hover {
-            opacity: 0.8;
-        }
-
-        .disclaimer-icon {
-            font-size: 4em;
-            display: block;
-            margin-bottom: 25px;
-            animation: shake 0.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6),
-                            0 0 0 0 rgba(255, 59, 48, 0.8);
-            }
-            50% {
-                box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6),
-                            0 0 0 25px rgba(255, 59, 48, 0);
-            }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-20deg); }
-            75% { transform: rotate(20deg); }
-        }
     </style>
 </head>
 <body>
-    <div class="canvas-container">
-        <canvas id="artCanvas"></canvas>
+<div class="canvas-container">
+    <canvas id="artCanvas"></canvas>
+</div>
+
+<div class="overlay">
+    <div class="title-container">
+        <h1>PURE SHORES</h1>
+        <div class="subtitle">Where waves meet infinity</div>
     </div>
+    <div class="wave-overlay"></div>
+</div>
 
-    <div class="overlay">
-        <div class="disclaimer">
-            <span class="disclaimer-icon">⚠️</span>
-            <div>IMPORTANT NOTICE</div>
-            <strong>This domain sends emails to nstarxinc.com employees only</strong>
-            <div class="disclaimer-legal">
-                This website complies with <a href="https://www.mailersend.com/legal" target="_blank" rel="noopener noreferrer">MailerSend Legal Agreements</a>
-            </div>
-        </div>
-        <div class="wave-overlay"></div>
-    </div>
+<script>
+    const canvas = document.getElementById('artCanvas');
+    const ctx = canvas.getContext('2d');
 
-    <script>
-        const canvas = document.getElementById('artCanvas');
-        const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Particle system for ocean effect
+    class Particle {
+        constructor() {
+            this.reset();
         }
 
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = (Math.random() - 0.5) * 0.5;
+            this.radius = Math.random() * 2 + 1;
+            this.opacity = Math.random() * 0.5 + 0.2;
+            this.hue = Math.random() * 60 + 180; // Blue-cyan range
+        }
 
-        // Particle system for ocean effect
-        class Particle {
-            constructor() {
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            if (this.x < 0 || this.x > canvas.width ||
+                this.y < 0 || this.y > canvas.height) {
                 this.reset();
             }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-                this.opacity = Math.random() * 0.5 + 0.2;
-                this.hue = Math.random() * 60 + 180; // Blue-cyan range
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width ||
-                    this.y < 0 || this.y > canvas.height) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.opacity})`;
-                ctx.fill();
-            }
         }
 
-        // Create particles
-        const particleCount = 200;
-        const particles = [];
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.opacity})`;
+            ctx.fill();
         }
+    }
 
-        // Wave animation
-        let time = 0;
+    // Create particles
+    const particleCount = 200;
+    const particles = [];
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
 
-        function drawWaves() {
-            const waveCount = 5;
-            const amplitude = 80;
+    // Wave animation
+    let time = 0;
 
-            for (let w = 0; w < waveCount; w++) {
-                ctx.beginPath();
-                ctx.moveTo(0, canvas.height);
+    function drawWaves() {
+        const waveCount = 5;
+        const amplitude = 80;
 
-                const waveHeight = canvas.height * 0.6 + w * 40;
-                const opacity = 0.1 - w * 0.015;
+        for (let w = 0; w < waveCount; w++) {
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height);
 
-                for (let x = 0; x <= canvas.width; x += 5) {
-                    const y = waveHeight +
-                        Math.sin((x * 0.003) + (time * 0.001) + (w * 0.5)) * amplitude +
-                        Math.sin((x * 0.005) + (time * 0.002) + (w * 0.3)) * (amplitude * 0.5);
-                    ctx.lineTo(x, y);
-                }
+            const waveHeight = canvas.height * 0.6 + w * 40;
+            const opacity = 0.1 - w * 0.015;
 
-                ctx.lineTo(canvas.width, canvas.height);
-                ctx.closePath();
-
-                const gradient = ctx.createLinearGradient(0, waveHeight - amplitude, 0, canvas.height);
-                gradient.addColorStop(0, `rgba(168, 237, 234, ${opacity})`);
-                gradient.addColorStop(1, `rgba(102, 126, 234, ${opacity * 1.5})`);
-
-                ctx.fillStyle = gradient;
-                ctx.fill();
+            for (let x = 0; x <= canvas.width; x += 5) {
+                const y = waveHeight +
+                    Math.sin((x * 0.003) + (time * 0.001) + (w * 0.5)) * amplitude +
+                    Math.sin((x * 0.005) + (time * 0.002) + (w * 0.3)) * (amplitude * 0.5);
+                ctx.lineTo(x, y);
             }
-        }
 
-        // Render glow effect
-        function drawGlow() {
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const maxRadius = Math.max(canvas.width, canvas.height);
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.closePath();
 
-            const gradient = ctx.createRadialGradient(
-                centerX, centerY, 0,
-                centerX, centerY, maxRadius
-            );
-
-            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
-            gradient.addColorStop(0.3, 'rgba(168, 237, 234, 0.05)');
-            gradient.addColorStop(0.6, 'rgba(102, 126, 234, 0.02)');
-            gradient.addColorStop(1, 'rgba(118, 75, 162, 0)');
+            const gradient = ctx.createLinearGradient(0, waveHeight - amplitude, 0, canvas.height);
+            gradient.addColorStop(0, `rgba(168, 237, 234, ${opacity})`);
+            gradient.addColorStop(1, `rgba(102, 126, 234, ${opacity * 1.5})`);
 
             ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fill();
         }
+    }
 
-        // Animation loop
-        function animate() {
-            // Background gradient
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            gradient.addColorStop(0, '#667eea');
-            gradient.addColorStop(0.5, '#764ba2');
-            gradient.addColorStop(1, '#f093fb');
+    // Render glow effect
+    function drawGlow() {
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const maxRadius = Math.max(canvas.width, canvas.height);
 
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const gradient = ctx.createRadialGradient(
+            centerX, centerY, 0,
+            centerX, centerY, maxRadius
+        );
 
-            // Draw effects
-            drawGlow();
-            drawWaves();
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
+        gradient.addColorStop(0.3, 'rgba(168, 237, 234, 0.05)');
+        gradient.addColorStop(0.6, 'rgba(102, 126, 234, 0.02)');
+        gradient.addColorStop(1, 'rgba(118, 75, 162, 0)');
 
-            // Update and draw particles
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
-            // Draw connections between close particles
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+    // Animation loop
+    function animate() {
+        // Background gradient
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#667eea');
+        gradient.addColorStop(0.5, '#764ba2');
+        gradient.addColorStop(1, '#f093fb');
 
-                    if (distance < 100) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(168, 237, 234, ${0.1 * (1 - distance / 100)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            time++;
-            requestAnimationFrame(animate);
-        }
+        // Draw effects
+        drawGlow();
+        drawWaves();
 
-        animate();
+        // Update and draw particles
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
 
-        // Mouse interaction
-        let mouseX = canvas.width / 2;
-        let mouseY = canvas.height / 2;
-
-        canvas.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            particles.forEach(particle => {
-                const dx = mouseX - particle.x;
-                const dy = mouseY - particle.y;
+        // Draw connections between close particles
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < 150) {
-                    const force = (150 - distance) / 150;
-                    particle.vx -= (dx / distance) * force * 0.2;
-                    particle.vy -= (dy / distance) * force * 0.2;
+                if (distance < 100) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(168, 237, 234, ${0.1 * (1 - distance / 100)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
                 }
-            });
+            }
+        }
+
+        time++;
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Mouse interaction
+    let mouseX = canvas.width / 2;
+    let mouseY = canvas.height / 2;
+
+    canvas.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        particles.forEach(particle => {
+            const dx = mouseX - particle.x;
+            const dy = mouseY - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 150) {
+                const force = (150 - distance) / 150;
+                particle.vx -= (dx / distance) * force * 0.2;
+                particle.vy -= (dy / distance) * force * 0.2;
+            }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
