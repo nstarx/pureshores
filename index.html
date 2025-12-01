@@ -107,6 +107,48 @@
             height: 30%;
             background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
         }
+
+        .nav-links {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 50px;
+            pointer-events: auto;
+        }
+
+        .nav-links a {
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -120,6 +162,10 @@
         <div class="subtitle">Where waves meet infinity</div>
     </div>
     <div class="wave-overlay"></div>
+    <nav class="nav-links">
+        <a href="conversation-claude-adrian.html">Conversație</a>
+        <a href="https://padrian2s.github.io/bible_deep_learning/" target="_blank">Bible DL</a>
+    </nav>
 </div>
 
 <script>
