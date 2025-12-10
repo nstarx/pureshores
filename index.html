@@ -110,44 +110,69 @@
 
         .nav-links {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 30px;
             pointer-events: auto;
+            max-width: 90%;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-links a {
-            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            font-size: clamp(0.65rem, 1.3vw, 0.85rem);
             font-weight: 300;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             position: relative;
+            padding: 5px 12px;
+            border-radius: 15px;
         }
 
-        .nav-links a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.5);
-            transition: all 0.4s ease;
-            transform: translateX(-50%);
+            inset: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
         }
 
         .nav-links a:hover {
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 1);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a .link-dot {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: rgba(168, 237, 234, 0.6);
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover .link-dot {
+            background: rgba(168, 237, 234, 1);
+            box-shadow: 0 0 8px rgba(168, 237, 234, 0.8);
         }
     </style>
 </head>
@@ -163,10 +188,10 @@
     </div>
     <div class="wave-overlay"></div>
     <nav class="nav-links">
-        <a href="conversation-claude-adrian.html">Conversație</a>
-        <a href="https://padrian2s.github.io/bible_deep_learning/" target="_blank">Bible DL</a>
-        <a href="https://nstarx.github.io/claude_internals/" target="_blank">SCM</a>
-
+        <a href="conversation-claude-adrian.html"><span class="link-dot"></span>Conversație</a>
+        <a href="https://padrian2s.github.io/bible_deep_learning/" target="_blank"><span class="link-dot"></span>Bible DL</a>
+        <a href="https://nstarx.github.io/claude_internals/" target="_blank"><span class="link-dot"></span>SCM</a>
+        <a href="https://padrian2s.github.io/chatgpt-book/" target="_blank"><span class="link-dot"></span>ChatGPT Book</a>
     </nav>
 </div>
 
