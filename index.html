@@ -30,7 +30,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: url('15_26_22.png') center center / cover no-repeat;
         }
 
         canvas {
@@ -56,7 +56,7 @@
             transform: translateX(-50%);
             text-align: center;
             color: white;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 40px rgba(126, 200, 227, 0.5);
             animation: slideUpFade 2s ease-out;
         }
 
@@ -76,7 +76,7 @@
             font-weight: 300;
             letter-spacing: 0.3em;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fff, #a8edea, #fed6e3);
+            background: linear-gradient(45deg, #fff, #b8e4f0, #7ec8e3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -105,7 +105,7 @@
             left: 0;
             width: 100%;
             height: 30%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+            background: linear-gradient(to top, rgba(126, 200, 227, 0.15), transparent);
         }
 
         .nav-container {
@@ -241,7 +241,7 @@
             display: inline-block;
             width: 4px;
             height: 4px;
-            background: rgba(168, 237, 234, 0.6);
+            background: rgba(126, 200, 227, 0.6);
             border-radius: 50%;
             margin-right: 8px;
             vertical-align: middle;
@@ -249,8 +249,8 @@
         }
 
         .nav-links a:hover .link-dot {
-            background: rgba(168, 237, 234, 1);
-            box-shadow: 0 0 8px rgba(168, 237, 234, 0.8);
+            background: rgba(126, 200, 227, 1);
+            box-shadow: 0 0 8px rgba(126, 200, 227, 0.8);
         }
 
         @media (max-width: 768px) {
@@ -353,7 +353,7 @@
             this.vy = (Math.random() - 0.5) * 0.5;
             this.radius = Math.random() * 2 + 1;
             this.opacity = Math.random() * 0.5 + 0.2;
-            this.hue = Math.random() * 60 + 180; // Blue-cyan range
+            this.hue = Math.random() * 30 + 185; // Cyan range matching image
         }
 
         update() {
@@ -406,8 +406,8 @@
             ctx.closePath();
 
             const gradient = ctx.createLinearGradient(0, waveHeight - amplitude, 0, canvas.height);
-            gradient.addColorStop(0, `rgba(168, 237, 234, ${opacity})`);
-            gradient.addColorStop(1, `rgba(102, 126, 234, ${opacity * 1.5})`);
+            gradient.addColorStop(0, `rgba(126, 200, 227, ${opacity})`);
+            gradient.addColorStop(1, `rgba(184, 228, 240, ${opacity * 1.5})`);
 
             ctx.fillStyle = gradient;
             ctx.fill();
@@ -425,10 +425,10 @@
             centerX, centerY, maxRadius
         );
 
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
-        gradient.addColorStop(0.3, 'rgba(168, 237, 234, 0.05)');
-        gradient.addColorStop(0.6, 'rgba(102, 126, 234, 0.02)');
-        gradient.addColorStop(1, 'rgba(118, 75, 162, 0)');
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.08)');
+        gradient.addColorStop(0.3, 'rgba(126, 200, 227, 0.04)');
+        gradient.addColorStop(0.6, 'rgba(184, 228, 240, 0.02)');
+        gradient.addColorStop(1, 'rgba(126, 200, 227, 0)');
 
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -436,14 +436,8 @@
 
     // Animation loop
     function animate() {
-        // Background gradient
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, '#667eea');
-        gradient.addColorStop(0.5, '#764ba2');
-        gradient.addColorStop(1, '#f093fb');
-
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Clear canvas to show background image
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Draw effects
         drawGlow();
@@ -466,7 +460,7 @@
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(168, 237, 234, ${0.1 * (1 - distance / 100)})`;
+                    ctx.strokeStyle = `rgba(126, 200, 227, ${0.1 * (1 - distance / 100)})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
