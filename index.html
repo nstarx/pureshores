@@ -200,14 +200,19 @@
         }
 
         .nav-container {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            pointer-events: auto;
-            animation: slideInFromBottom 1s ease-out;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
         }
 
         .nav-toggle {
+            position: absolute;
+            top: 30px;
+            left: 30px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -224,6 +229,8 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            pointer-events: auto;
+            z-index: 1002;
         }
 
         .nav-toggle:hover {
@@ -250,7 +257,7 @@
         }
 
         .nav-container.open .nav-toggle-icon span:nth-child(1) {
-            transform: rotate(45deg) translate(4px, 4px);
+            transform: rotate(45deg) translate(5px, 5px);
         }
 
         .nav-container.open .nav-toggle-icon span:nth-child(2) {
@@ -258,161 +265,147 @@
         }
 
         .nav-container.open .nav-toggle-icon span:nth-child(3) {
-            transform: rotate(-45deg) translate(4px, -4px);
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .nav-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .nav-container.open .nav-overlay {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
 
         .nav-links {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 20px 25px;
-            margin-top: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-height: 0;
-            overflow: hidden;
+            align-items: center;
+            gap: 20px;
             opacity: 0;
-            transition: all 0.4s ease;
+            visibility: hidden;
+            transition: opacity 0.4s ease 0.1s, visibility 0.4s ease 0.1s;
+            z-index: 1001;
+            pointer-events: none;
         }
 
         .nav-container.open .nav-links {
-            max-height: 500px;
             opacity: 1;
-            padding: 20px 25px;
-        }
-
-        @keyframes slideInFromBottom {
-            from {
-                opacity: 0;
-                transform: translateY(100px) translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) translateX(0);
-            }
+            visibility: visible;
+            pointer-events: auto;
         }
 
         .nav-links a {
-            font-size: clamp(0.65rem, 1.3vw, 0.85rem);
-            font-weight: 300;
-            letter-spacing: 0.12em;
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
+            color: white;
             text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
-            padding: 5px 12px;
-            border-radius: 15px;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links a:hover::before {
-            opacity: 1;
+            padding: 12px 30px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 280px;
+            text-align: center;
         }
 
         .nav-links a:hover {
-            color: rgba(255, 255, 255, 1);
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            background: rgba(126, 200, 227, 0.2);
+            border-color: rgba(126, 200, 227, 0.4);
+            color: rgba(126, 200, 227, 1);
+            text-shadow: 0 0 20px rgba(126, 200, 227, 0.6);
+            transform: translateY(-2px);
         }
 
         .nav-links a .link-dot {
             display: inline-block;
-            width: 4px;
-            height: 4px;
-            background: rgba(126, 200, 227, 0.6);
+            width: 6px;
+            height: 6px;
+            background: rgba(126, 200, 227, 0.8);
             border-radius: 50%;
-            margin-right: 8px;
+            margin-right: 12px;
             vertical-align: middle;
             transition: all 0.3s ease;
         }
 
         .nav-links a:hover .link-dot {
             background: rgba(126, 200, 227, 1);
-            box-shadow: 0 0 8px rgba(126, 200, 227, 0.8);
+            box-shadow: 0 0 12px rgba(126, 200, 227, 1);
         }
 
         @media (max-width: 768px) {
-            .nav-container {
-                top: 15px;
-                left: 15px;
-                right: 15px;
+            .nav-toggle {
+                top: 20px;
+                left: 20px;
+                padding: 16px 22px;
+                background: rgba(0, 0, 0, 0.7);
+                border: 2px solid rgba(255, 255, 255, 0.5);
+                font-size: 1rem;
+                font-weight: 500;
+                color: white;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             }
 
-            .nav-toggle {
-                font-size: 1rem;
-                padding: 16px 24px;
-                background: rgba(255, 255, 255, 0.25);
-                border: 2px solid rgba(255, 255, 255, 0.3);
-                color: white;
-                font-weight: 500;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            .nav-container.open .nav-toggle {
+                background: rgba(0, 0, 0, 0.9);
+                border-color: rgba(126, 200, 227, 0.8);
             }
 
             .nav-toggle-icon {
-                width: 26px;
+                width: 28px;
                 height: 20px;
             }
 
             .nav-toggle-icon span {
                 height: 3px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                background: white;
             }
 
             .nav-links {
-                padding: 0;
-                gap: 12px;
-                background: rgba(0, 0, 0, 0.75);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 2px solid rgba(255, 255, 255, 0.25);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            }
-
-            .nav-container.open .nav-links {
-                padding: 24px 20px;
+                gap: 24px;
+                padding: 0 20px;
+                max-width: 90%;
             }
 
             .nav-links a {
-                font-size: 1.05rem !important;
-                padding: 14px 18px;
-                letter-spacing: 0.08em;
-                color: white;
+                font-size: 1.3rem !important;
+                padding: 18px 24px;
+                letter-spacing: 0.1em;
+                min-width: 100%;
+                background: rgba(255, 255, 255, 0.08);
+                border: 2px solid rgba(255, 255, 255, 0.2);
                 font-weight: 500;
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 12px;
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-                width: 100%;
-            }
-
-            .nav-links a::before {
-                background: rgba(126, 200, 227, 0.25);
             }
 
             .nav-links a:active {
                 background: rgba(126, 200, 227, 0.3);
-                transform: scale(0.98);
+                transform: scale(0.96);
             }
 
             .nav-links a .link-dot {
                 width: 8px;
                 height: 8px;
-                margin-right: 12px;
-                background: rgba(126, 200, 227, 1);
-                box-shadow: 0 0 8px rgba(126, 200, 227, 0.8);
+                margin-right: 14px;
             }
 
             .title-container {
@@ -420,17 +413,18 @@
             }
 
             .about-container {
-                bottom: 15px;
-                right: 15px;
+                bottom: 20px;
+                right: 20px;
             }
 
             .about-link {
-                padding: 14px 20px;
-                font-size: 1rem;
-                background: rgba(255, 255, 255, 0.2);
-                border: 2px solid rgba(255, 255, 255, 0.25);
+                padding: 16px 24px;
+                font-size: 1.1rem;
+                background: rgba(0, 0, 0, 0.7);
+                border: 2px solid rgba(255, 255, 255, 0.5);
                 font-weight: 500;
                 color: white;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             }
         }
     </style>
@@ -462,6 +456,7 @@
             </div>
             Menu
         </button>
+        <div class="nav-overlay"></div>
         <nav class="nav-links">
             <a href="conversation-claude-adrian.html"><span class="link-dot"></span>Conversație</a>
             <a href="https://padrian2s.github.io/bible_deep_learning/" target="_blank"><span class="link-dot"></span>Bible DL</a>
@@ -643,9 +638,24 @@
     // Nav toggle functionality
     const navToggle = document.getElementById('navToggle');
     const navContainer = document.getElementById('navContainer');
+    const navOverlay = navContainer.querySelector('.nav-overlay');
+    const navLinks = navContainer.querySelectorAll('.nav-links a');
 
-    navToggle.addEventListener('click', () => {
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         navContainer.classList.toggle('open');
+    });
+
+    // Close menu when clicking overlay
+    navOverlay.addEventListener('click', () => {
+        navContainer.classList.remove('open');
+    });
+
+    // Close menu when clicking any link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navContainer.classList.remove('open');
+        });
     });
 
     // Ring overlay positioning - calculates exact position based on background-size: cover
