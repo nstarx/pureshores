@@ -1,11 +1,15 @@
 {
   "name": "pureshores",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pure Shores - Where waves meet infinity",
   "main": "index.js",
   "scripts": {
+    "build": "mkdir -p dist && cp -r *.html *.png *.js LICENSE dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
-  "private": true
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
 }
