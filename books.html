@@ -331,6 +331,100 @@
       color: #a08030;
     }
 
+    /* Book 5: Differential Geometry - Warm orange/amber */
+    .book-5 .book-cover {
+      background:
+        url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v1H0zM2 0h1v1H2zM4 0h1v1H4zM6 0h1v1H6zM1 1h1v1H1zM3 1h1v1H3zM5 1h1v1H5zM7 1h1v1H7z' fill='%23ffffff' fill-opacity='0.02'/%3E%3C/svg%3E"),
+        linear-gradient(165deg, #d4702a 0%, #b85a1f 50%, #8f4518 100%);
+      color: #fff5e8;
+    }
+
+    .book-5 .book-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.06;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Abstract manifold/surface pattern */
+    .book-5 .book-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='100' cy='80' rx='50' ry='25' fill='none' stroke='%23fff5e8' stroke-width='1' opacity='0.2'/%3E%3Cpath d='M50 80 Q100 140 150 80' fill='none' stroke='%23fff5e8' stroke-width='0.8' opacity='0.15'/%3E%3Cpath d='M60 75 Q100 120 140 75' fill='none' stroke='%23fff5e8' stroke-width='0.6' opacity='0.12'/%3E%3Ccircle cx='100' cy='170' r='35' fill='none' stroke='%23fff5e8' stroke-width='1' opacity='0.15'/%3E%3Cpath d='M65 170 Q100 200 135 170' fill='none' stroke='%23fff5e8' stroke-width='0.8' opacity='0.12'/%3E%3Cpath d='M70 165 Q100 185 130 165' fill='none' stroke='%23fff5e8' stroke-width='0.6' opacity='0.1'/%3E%3Cpath d='M40 240 C60 220 80 260 100 240 C120 220 140 260 160 240' fill='none' stroke='%23fff5e8' stroke-width='1' opacity='0.15'/%3E%3Cpath d='M50 250 C70 235 90 265 110 250 C130 235 150 265 170 250' fill='none' stroke='%23fff5e8' stroke-width='0.6' opacity='0.1'/%3E%3C/svg%3E");
+      background-size: 100% auto;
+      background-position: center top;
+      background-repeat: no-repeat;
+      border-radius: 0 4px 4px 0;
+      pointer-events: none;
+    }
+
+    .book-5 .book-cover .title-emboss {
+      text-shadow: 0 1px 0 rgba(0,0,0,0.4), 0 -1px 0 rgba(255,255,255,0.15);
+      color: #fff5e8;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+    }
+
+    .book-5 .book-spine {
+      background: linear-gradient(90deg, #6b3510 0%, #8f4518 40%, #b85a1f 60%, #8f4518 100%);
+      color: #fff5e8;
+    }
+
+    .book-5 .book-back {
+      background: linear-gradient(165deg, #b85a1f 0%, #8f4518 100%);
+      color: #f0d8c0;
+    }
+
+    /* Book 6: Category Theory - Deep blue/indigo */
+    .book-6 .book-cover {
+      background:
+        url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v1H0zM2 0h1v1H2zM4 0h1v1H4zM6 0h1v1H6zM1 1h1v1H1zM3 1h1v1H3zM5 1h1v1H5zM7 1h1v1H7z' fill='%23ffffff' fill-opacity='0.02'/%3E%3C/svg%3E"),
+        linear-gradient(165deg, #4a5899 0%, #364078 50%, #252d5a 100%);
+      color: #e0e8ff;
+    }
+
+    .book-6 .book-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.05;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Abstract arrows/morphisms pattern */
+    .book-6 .book-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='20' fill='none' stroke='%23c0d0ff' stroke-width='1.5' opacity='0.2'/%3E%3Ccircle cx='140' cy='60' r='20' fill='none' stroke='%23c0d0ff' stroke-width='1.5' opacity='0.2'/%3E%3Cpath d='M82 60 L118 60' stroke='%23c0d0ff' stroke-width='1' opacity='0.2'/%3E%3Cpath d='M112 55 L118 60 L112 65' fill='none' stroke='%23c0d0ff' stroke-width='1' opacity='0.2'/%3E%3Ccircle cx='100' cy='140' r='20' fill='none' stroke='%23c0d0ff' stroke-width='1' opacity='0.15'/%3E%3Cpath d='M68 78 L88 122' stroke='%23c0d0ff' stroke-width='0.8' opacity='0.15'/%3E%3Cpath d='M132 78 L112 122' stroke='%23c0d0ff' stroke-width='0.8' opacity='0.15'/%3E%3Ccircle cx='50' cy='220' r='15' fill='none' stroke='%23c0d0ff' stroke-width='1' opacity='0.15'/%3E%3Ccircle cx='100' cy='220' r='15' fill='none' stroke='%23c0d0ff' stroke-width='1' opacity='0.15'/%3E%3Ccircle cx='150' cy='220' r='15' fill='none' stroke='%23c0d0ff' stroke-width='1' opacity='0.15'/%3E%3Cpath d='M67 220 L83 220' stroke='%23c0d0ff' stroke-width='0.8' opacity='0.12'/%3E%3Cpath d='M117 220 L133 220' stroke='%23c0d0ff' stroke-width='0.8' opacity='0.12'/%3E%3Cpath d='M58 207 Q100 180 142 207' fill='none' stroke='%23c0d0ff' stroke-width='0.6' opacity='0.1'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%23c0d0ff' opacity='0.25'/%3E%3Ccircle cx='140' cy='60' r='4' fill='%23c0d0ff' opacity='0.25'/%3E%3Ccircle cx='100' cy='140' r='3' fill='%23c0d0ff' opacity='0.2'/%3E%3C/svg%3E");
+      background-size: 100% auto;
+      background-position: center top;
+      background-repeat: no-repeat;
+      border-radius: 0 4px 4px 0;
+      pointer-events: none;
+    }
+
+    .book-6 .book-cover .title-emboss {
+      background: linear-gradient(180deg, #c0d0ff 0%, #e0e8ff 25%, #b0c0f0 50%, #a0b0e0 75%, #c0d0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+    }
+
+    .book-6 .book-spine {
+      background: linear-gradient(90deg, #1a2040 0%, #364078 40%, #4a5899 60%, #364078 100%);
+      color: #d0d8f0;
+    }
+
+    .book-6 .book-back {
+      background: linear-gradient(165deg, #364078 0%, #252d5a 100%);
+      color: #b0c0e0;
+    }
+
     /* Shared book structure */
     .book-cover {
       width: 100%;
@@ -471,6 +565,28 @@
       background: #151b32;
     }
 
+    .book-5 .book-cover .cover-inner,
+    .book-5 .book-cover .cover-edge-top,
+    .book-5 .book-cover .cover-edge-bottom,
+    .book-5 .book-cover .cover-edge-right,
+    .book-5 .book-back .cover-inner,
+    .book-5 .book-back .cover-edge-top,
+    .book-5 .book-back .cover-edge-bottom,
+    .book-5 .book-back .cover-edge-left {
+      background: #8f4518;
+    }
+
+    .book-6 .book-cover .cover-inner,
+    .book-6 .book-cover .cover-edge-top,
+    .book-6 .book-cover .cover-edge-bottom,
+    .book-6 .book-cover .cover-edge-right,
+    .book-6 .book-back .cover-inner,
+    .book-6 .book-back .cover-edge-top,
+    .book-6 .book-back .cover-edge-bottom,
+    .book-6 .book-back .cover-edge-left {
+      background: #252d5a;
+    }
+
     .book-cover h3 {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.5rem;
@@ -504,6 +620,8 @@
     .book-2 .line { background: linear-gradient(90deg, transparent, #ffd0e0, transparent); }
     .book-3 .line { background: linear-gradient(90deg, transparent, #d4c0f0, transparent); }
     .book-4 .line { background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+    .book-5 .line { background: linear-gradient(90deg, transparent, #fff5e8, transparent); }
+    .book-6 .line { background: linear-gradient(90deg, transparent, #c0d0ff, transparent); }
 
     /* Back Cover */
     .book-back {
@@ -670,6 +788,14 @@
 
     .book-4 .book-top::after, .book-4 .book-bottom::after {
       background: repeating-linear-gradient(180deg, #c9a43a 0px, #c9a43a 2px, #1e2848 2px, #1e2848 4px);
+    }
+
+    .book-5 .book-top::after, .book-5 .book-bottom::after {
+      background: repeating-linear-gradient(180deg, #d4702a 0px, #d4702a 2px, #fff5e8 2px, #fff5e8 4px);
+    }
+
+    .book-6 .book-top::after, .book-6 .book-bottom::after {
+      background: repeating-linear-gradient(180deg, #4a5899 0px, #4a5899 2px, #c0d0ff 2px, #c0d0ff 4px);
     }
 
     /* Shadow */
@@ -935,6 +1061,84 @@
           <p class="author-name">Adrian P.</p>
           <p class="description">Using AI and deep learning to discover patterns and insights in biblical texts.</p>
           <a href="https://padrian2s.github.io/bible_deep_learning/" target="_blank" class="book-link">Read Book</a>
+        </div>
+        <p class="drag-hint">Hover or drag to explore</p>
+      </article>
+
+      <!-- Book 5: Differential Geometry -->
+      <article class="book-card book-5">
+        <div class="book-container" data-book="5">
+          <div class="book">
+            <div class="book-cover">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-right"></div>
+              <div class="cover-edge-bottom"></div>
+              <h3 class="title-emboss">Differential Geometry</h3>
+              <div class="line"></div>
+              <span class="author">Adrian P.</span>
+            </div>
+            <div class="book-back">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-left"></div>
+              <div class="cover-edge-bottom"></div>
+              <p class="blurb">"An exploration of curves, surfaces, and manifolds through the lens of calculus and geometric intuition."</p>
+              <div class="barcode"></div>
+            </div>
+            <div class="book-spine">
+              <span>Differential Geometry — Adrian P.</span>
+            </div>
+            <div class="book-pages"></div>
+            <div class="book-top"></div>
+            <div class="book-bottom"></div>
+          </div>
+        </div>
+        <div class="book-shadow"></div>
+        <div class="book-info">
+          <h4>Differential Geometry</h4>
+          <p class="author-name">Adrian P.</p>
+          <p class="description">Understanding the mathematics of curves, surfaces, and the geometry of smooth spaces.</p>
+          <a href="https://padrian2s.github.io/differential_geometry/" target="_blank" class="book-link">Read Book</a>
+        </div>
+        <p class="drag-hint">Hover or drag to explore</p>
+      </article>
+
+      <!-- Book 6: Category Theory -->
+      <article class="book-card book-6">
+        <div class="book-container" data-book="6">
+          <div class="book">
+            <div class="book-cover">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-right"></div>
+              <div class="cover-edge-bottom"></div>
+              <h3 class="title-emboss">Category Theory</h3>
+              <div class="line"></div>
+              <span class="author">Adrian P.</span>
+            </div>
+            <div class="book-back">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-left"></div>
+              <div class="cover-edge-bottom"></div>
+              <p class="blurb">"A journey through the abstract mathematics of objects, morphisms, and the universal language of structure."</p>
+              <div class="barcode"></div>
+            </div>
+            <div class="book-spine">
+              <span>Category Theory — Adrian P.</span>
+            </div>
+            <div class="book-pages"></div>
+            <div class="book-top"></div>
+            <div class="book-bottom"></div>
+          </div>
+        </div>
+        <div class="book-shadow"></div>
+        <div class="book-info">
+          <h4>Category Theory</h4>
+          <p class="author-name">Adrian P.</p>
+          <p class="description">Exploring the abstract mathematics of structure, composition, and universal patterns.</p>
+          <a href="https://padrian2s.github.io/category_theory/" target="_blank" class="book-link">Read Book</a>
         </div>
         <p class="drag-hint">Hover or drag to explore</p>
       </article>
