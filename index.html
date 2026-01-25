@@ -33,6 +33,19 @@
             background: url('15_26_37.png') center center / cover no-repeat;
         }
 
+        .ring-overlay {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(180, 230, 255, 0.8);
+            box-shadow:
+                0 0 30px rgba(180, 230, 255, 0.6),
+                0 0 60px rgba(180, 230, 255, 0.4),
+                0 0 100px rgba(180, 230, 255, 0.2),
+                inset 0 0 25px rgba(180, 230, 255, 0.4);
+            pointer-events: none;
+            z-index: 1;
+        }
+
         canvas {
             display: block;
             width: 100%;
@@ -368,6 +381,7 @@
 <body>
 <div class="canvas-container">
     <canvas id="artCanvas"></canvas>
+    <div class="ring-overlay" id="ringOverlay"></div>
 </div>
 
 <div class="overlay">
@@ -592,6 +606,56 @@
         });
     });
 
+    // Ring overlay positioning - calculates exact position based on background-size: cover
+    const ringOverlay = document.getElementById('ringOverlay');
+
+    // Ring position in the original image (1536x1024)
+    const IMG_WIDTH = 1536;
+    const IMG_HEIGHT = 1024;
+    const RING_X = 732;      // X center of ring in image pixels
+    const RING_Y = 307;      // Y center of ring in image pixels
+    const RING_SIZE = 90;    // Ring diameter in image pixels
+
+    function positionRing() {
+        const container = document.querySelector('.canvas-container');
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+
+        const imgRatio = IMG_WIDTH / IMG_HEIGHT;
+        const containerRatio = containerWidth / containerHeight;
+
+        let renderedWidth, renderedHeight, offsetX, offsetY;
+
+        if (containerRatio > imgRatio) {
+            // Container is wider - image is scaled by width, cropped top/bottom
+            renderedWidth = containerWidth;
+            renderedHeight = containerWidth / imgRatio;
+            offsetX = 0;
+            offsetY = (containerHeight - renderedHeight) / 2;
+        } else {
+            // Container is taller - image is scaled by height, cropped left/right
+            renderedHeight = containerHeight;
+            renderedWidth = containerHeight * imgRatio;
+            offsetX = (containerWidth - renderedWidth) / 2;
+            offsetY = 0;
+        }
+
+        // Calculate ring position in viewport
+        const scale = renderedWidth / IMG_WIDTH;
+        const ringX = offsetX + (RING_X * scale);
+        const ringY = offsetY + (RING_Y * scale);
+        const ringSize = RING_SIZE * scale;
+
+        ringOverlay.style.left = ringX + 'px';
+        ringOverlay.style.top = ringY + 'px';
+        ringOverlay.style.width = ringSize + 'px';
+        ringOverlay.style.height = ringSize + 'px';
+        ringOverlay.style.marginLeft = (-ringSize / 2) + 'px';
+        ringOverlay.style.marginTop = (-ringSize / 2) + 'px';
+    }
+
+    positionRing();
+    window.addEventListener('resize', positionRing);
 </script>
 </body>
 </html>
