@@ -569,6 +569,54 @@
       color: #bae6fd;
     }
 
+    /* Book 10: How I Became a Quant - Gold/Amber finance theme */
+    .book-10 .book-cover {
+      background:
+        url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v1H0zM2 0h1v1H2zM4 0h1v1H4zM6 0h1v1H6zM1 1h1v1H1zM3 1h1v1H3zM5 1h1v1H5zM7 1h1v1H7z' fill='%23ffffff' fill-opacity='0.02'/%3E%3C/svg%3E"),
+        linear-gradient(165deg, #d4a574 0%, #b8860b 50%, #8b6914 100%);
+      color: #fef3c7;
+    }
+
+    .book-10 .book-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.05;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Abstract chart/finance pattern */
+    .book-10 .book-cover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 200 L40 180 L60 190 L80 160 L100 170 L120 140 L140 150 L160 120 L180 100' fill='none' stroke='%23ffffff' stroke-width='2' opacity='0.15'/%3E%3Cpath d='M20 220 L40 210 L60 215 L80 195 L100 200 L120 180 L140 185 L160 165 L180 150' fill='none' stroke='%23ffffff' stroke-width='1.5' opacity='0.1'/%3E%3Ccircle cx='80' cy='160' r='4' fill='%23ffffff' opacity='0.2'/%3E%3Ccircle cx='120' cy='140' r='4' fill='%23ffffff' opacity='0.2'/%3E%3Ccircle cx='160' cy='120' r='4' fill='%23ffffff' opacity='0.2'/%3E%3Ccircle cx='180' cy='100' r='5' fill='%23ffffff' opacity='0.25'/%3E%3C/svg%3E");
+      background-size: 100% auto;
+      background-position: center top;
+      background-repeat: no-repeat;
+      border-radius: 0 4px 4px 0;
+      pointer-events: none;
+    }
+
+    .book-10 .book-cover .title-emboss {
+      background: linear-gradient(180deg, #fef3c7 0%, #fde68a 25%, #fcd34d 50%, #f59e0b 75%, #fef3c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+    }
+
+    .book-10 .book-spine {
+      background: linear-gradient(90deg, #78350f 0%, #92400e 40%, #b8860b 60%, #92400e 100%);
+      color: #fde68a;
+    }
+
+    .book-10 .book-back {
+      background: linear-gradient(165deg, #92400e 0%, #78350f 100%);
+      color: #fde68a;
+    }
+
     /* Shared book structure */
     .book-cover {
       width: 100%;
@@ -762,6 +810,17 @@
     .book-9 .book-back .cover-edge-bottom,
     .book-9 .book-back .cover-edge-left {
       background: #1d4ed8;
+    }
+
+    .book-10 .book-cover .cover-inner,
+    .book-10 .book-cover .cover-edge-top,
+    .book-10 .book-cover .cover-edge-bottom,
+    .book-10 .book-cover .cover-edge-right,
+    .book-10 .book-back .cover-inner,
+    .book-10 .book-back .cover-edge-top,
+    .book-10 .book-back .cover-edge-bottom,
+    .book-10 .book-back .cover-edge-left {
+      background: #78350f;
     }
 
     .book-cover h3 {
@@ -1448,6 +1507,45 @@
           <p class="author-name">Adrian P.</p>
           <p class="description">How large language models can reason and act autonomously with planning and multi-agent systems.</p>
           <a href="https://padrian2s.github.io/agents_135/" target="_blank" class="book-link">Read Book</a>
+        </div>
+        <p class="drag-hint">Hover or drag to explore</p>
+      </article>
+
+      <!-- Book 10: How I Became a Quant -->
+      <article class="book-card book-10">
+        <div class="book-container" data-book="10">
+          <div class="book">
+            <div class="book-cover">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-right"></div>
+              <div class="cover-edge-bottom"></div>
+              <h3 class="title-emboss">How I Became a Quant</h3>
+              <div class="line"></div>
+              <span class="author">Adrian P.</span>
+            </div>
+            <div class="book-back">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-left"></div>
+              <div class="cover-edge-bottom"></div>
+              <p class="blurb">"Insights from Wall Street's elite quantitative finance professionals and their unexpected career paths."</p>
+              <div class="barcode"></div>
+            </div>
+            <div class="book-spine">
+              <span>How I Became a Quant — Adrian P.</span>
+            </div>
+            <div class="book-pages"></div>
+            <div class="book-top"></div>
+            <div class="book-bottom"></div>
+          </div>
+        </div>
+        <div class="book-shadow"></div>
+        <div class="book-info">
+          <h4>How I Became a Quant</h4>
+          <p class="author-name">Adrian P.</p>
+          <p class="description">Career paths and insights from 25 of Wall Street's elite quantitative finance professionals.</p>
+          <a href="https://padrian2s.github.io/quant/" target="_blank" class="book-link">Read Book</a>
         </div>
         <p class="drag-hint">Hover or drag to explore</p>
       </article>
