@@ -652,6 +652,41 @@
       color: #e9d5ff;
     }
 
+    /* Book 12: CLRS - Red/Crimson algorithms theme */
+    .book-12 .book-cover {
+      background:
+        url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5 L35 20 L20 35 L5 20 Z' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/svg%3E"),
+        linear-gradient(165deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+      color: #fecaca;
+    }
+
+    .book-12 .book-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.05;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .book-12 .book-cover .title-emboss {
+      background: linear-gradient(180deg, #ffffff 0%, #fecaca 25%, #fca5a5 50%, #f87171 75%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+    }
+
+    .book-12 .book-spine {
+      background: linear-gradient(90deg, #7f1d1d 0%, #991b1b 40%, #dc2626 60%, #991b1b 100%);
+      color: #fecaca;
+    }
+
+    .book-12 .book-back {
+      background: linear-gradient(165deg, #991b1b 0%, #7f1d1d 100%);
+      color: #fecaca;
+    }
+
     /* Shared book structure */
     .book-cover {
       width: 100%;
@@ -867,6 +902,17 @@
     .book-11 .book-back .cover-edge-bottom,
     .book-11 .book-back .cover-edge-left {
       background: #4c1d95;
+    }
+
+    .book-12 .book-cover .cover-inner,
+    .book-12 .book-cover .cover-edge-top,
+    .book-12 .book-cover .cover-edge-bottom,
+    .book-12 .book-cover .cover-edge-right,
+    .book-12 .book-back .cover-inner,
+    .book-12 .book-back .cover-edge-top,
+    .book-12 .book-back .cover-edge-bottom,
+    .book-12 .book-back .cover-edge-left {
+      background: #7f1d1d;
     }
 
     .book-cover h3 {
@@ -1631,6 +1677,45 @@
           <p class="author-name">Adrian P.</p>
           <p class="description">Noțiuni. Algoritmi. Implementări - Un ghid complet pentru teoria grafurilor cu BFS, DFS, Dijkstra, Kruskal și Prim.</p>
           <a href="https://padrian2s.github.io/grafuri/" target="_blank" class="book-link">Read Book</a>
+        </div>
+        <p class="drag-hint">Hover or drag to explore</p>
+      </article>
+
+      <!-- Book 12: Introduction to Algorithms (CLRS) -->
+      <article class="book-card book-12">
+        <div class="book-container" data-book="12">
+          <div class="book">
+            <div class="book-cover">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-right"></div>
+              <div class="cover-edge-bottom"></div>
+              <h3 class="title-emboss">Introduction to Algorithms</h3>
+              <div class="line"></div>
+              <span class="author">CLRS</span>
+            </div>
+            <div class="book-back">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-left"></div>
+              <div class="cover-edge-bottom"></div>
+              <p class="blurb">"The comprehensive guide to algorithms that has defined computer science education for decades."</p>
+              <div class="barcode"></div>
+            </div>
+            <div class="book-spine">
+              <span>Introduction to Algorithms — CLRS</span>
+            </div>
+            <div class="book-pages"></div>
+            <div class="book-top"></div>
+            <div class="book-bottom"></div>
+          </div>
+        </div>
+        <div class="book-shadow"></div>
+        <div class="book-info">
+          <h4>Introduction to Algorithms</h4>
+          <p class="author-name">Cormen, Leiserson, Rivest, Stein</p>
+          <p class="description">Third Edition - The definitive guide to algorithms covering data structures, sorting, graph algorithms, and computational complexity.</p>
+          <a href="https://padrian2s.github.io/clrs_book/" target="_blank" class="book-link">Read Book</a>
         </div>
         <p class="drag-hint">Hover or drag to explore</p>
       </article>
