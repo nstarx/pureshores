@@ -687,6 +687,41 @@
       color: #fecaca;
     }
 
+    /* Book 13: Frame Innovation - Teal/Cyan design thinking theme */
+    .book-13 .book-cover {
+      background:
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='10' width='40' height='40' rx='4' fill='none' stroke='%23ffffff' stroke-opacity='0.08' stroke-width='1'/%3E%3Crect x='18' y='18' width='24' height='24' rx='2' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/svg%3E"),
+        linear-gradient(165deg, #0891b2 0%, #0e7490 50%, #155e75 100%);
+      color: #cffafe;
+    }
+
+    .book-13 .book-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.05;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .book-13 .book-cover .title-emboss {
+      background: linear-gradient(180deg, #ffffff 0%, #cffafe 25%, #a5f3fc 50%, #67e8f9 75%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+    }
+
+    .book-13 .book-spine {
+      background: linear-gradient(90deg, #155e75 0%, #0e7490 40%, #0891b2 60%, #0e7490 100%);
+      color: #cffafe;
+    }
+
+    .book-13 .book-back {
+      background: linear-gradient(165deg, #0e7490 0%, #155e75 100%);
+      color: #cffafe;
+    }
+
     /* Shared book structure */
     .book-cover {
       width: 100%;
@@ -913,6 +948,17 @@
     .book-12 .book-back .cover-edge-bottom,
     .book-12 .book-back .cover-edge-left {
       background: #7f1d1d;
+    }
+
+    .book-13 .book-cover .cover-inner,
+    .book-13 .book-cover .cover-edge-top,
+    .book-13 .book-cover .cover-edge-bottom,
+    .book-13 .book-cover .cover-edge-right,
+    .book-13 .book-back .cover-inner,
+    .book-13 .book-back .cover-edge-top,
+    .book-13 .book-back .cover-edge-bottom,
+    .book-13 .book-back .cover-edge-left {
+      background: #155e75;
     }
 
     .book-cover h3 {
@@ -1716,6 +1762,45 @@
           <p class="author-name">Cormen, Leiserson, Rivest, Stein</p>
           <p class="description">Third Edition - The definitive guide to algorithms covering data structures, sorting, graph algorithms, and computational complexity.</p>
           <a href="https://padrian2s.github.io/clrs_book/" target="_blank" class="book-link">Read Book</a>
+        </div>
+        <p class="drag-hint">Hover or drag to explore</p>
+      </article>
+
+      <!-- Book 13: Frame Innovation -->
+      <article class="book-card book-13">
+        <div class="book-container" data-book="13">
+          <div class="book">
+            <div class="book-cover">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-right"></div>
+              <div class="cover-edge-bottom"></div>
+              <h3 class="title-emboss">Frame Innovation</h3>
+              <div class="line"></div>
+              <span class="author">Kees Dorst</span>
+            </div>
+            <div class="book-back">
+              <div class="cover-inner"></div>
+              <div class="cover-edge-top"></div>
+              <div class="cover-edge-left"></div>
+              <div class="cover-edge-bottom"></div>
+              <p class="blurb">"A systematic approach to solving open, complex problems through reframing — creating new thinking by design."</p>
+              <div class="barcode"></div>
+            </div>
+            <div class="book-spine">
+              <span>Frame Innovation — Kees Dorst</span>
+            </div>
+            <div class="book-pages"></div>
+            <div class="book-top"></div>
+            <div class="book-bottom"></div>
+          </div>
+        </div>
+        <div class="book-shadow"></div>
+        <div class="book-info">
+          <h4>Frame Innovation</h4>
+          <p class="author-name">Kees Dorst</p>
+          <p class="description">Create New Thinking by Design - A methodology for tackling complex problems through reframing, drawing on design thinking principles.</p>
+          <a href="https://padrian2s.github.io/Frame_Innovation/" target="_blank" class="book-link">Read Book</a>
         </div>
         <p class="drag-hint">Hover or drag to explore</p>
       </article>
